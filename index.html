@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<body>
+
+<div id="myPlot" style="width:100%;height:100%;max-width:500px;max-height:500px;"></div>
+
+<script>
+// var xArray = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1];
+var xArray = [];
+for (let i = 0; i<21; i++) {
+  xArray[i] = -1 + (i/10);
+}
+// var yArray = [0, 0.01, 0.04, 0.09, 0.16, 0.25, 0.36, 0.49, 0.64, 0.81, 1];
+var yArray = [];
+for (let i = 0; i<xArray.length; i++){
+  yArray[i] = (xArray[i]**2);
+}
+
+var yArray2 = [];
+for (let i = 0; i<xArray.length; i++){
+  yArray2[i] = -(xArray[i]**2);
+}
+
+// Define Data
+var data = [{
+  x:xArray,
+  y:yArray,
+  mode: "line"
+}, {
+  x:xArray,
+  y:yArray2,
+  mode: "line"
+}, {
+  x:yArray,
+  y:xArray,
+  mode: "line"
+}, {
+  x:yArray2,
+  y:xArray,
+  mode: "line"
+}];
+
+// Define Layout
+var layout = {
+  xaxis: {range: [-2, 2], title: "x"},
+  yaxis: {range: [-2, 2], title: "y"},  
+  title: "x vs. y"
+};
+
+// Display using Plotly
+Plotly.newPlot("myPlot", data, layout);
+</script>
+
+</body>
+</html>
